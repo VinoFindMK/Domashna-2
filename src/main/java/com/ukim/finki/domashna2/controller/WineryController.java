@@ -11,18 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/wineries")
+@RequestMapping("/")
 public class WineryController {
 
     @Autowired
     private WineryService wineryService;
 
-    @GetMapping("/list")
+    @GetMapping("/Wineries")
     public String listWineries(Model model) {
         List<WineryInfo> wineries = wineryService.getAllWineries();
         model.addAttribute("wineries", wineries);
-        return "wineryData";
+        return "Wineries";
     }
+
+    @GetMapping("/Home")
+    public String home() {
+        return "Home";
+    }
+
+    @GetMapping("/About")
+    public String about() {
+        return "AboutUs";
+    }
+
+    @GetMapping("/Map")
+    public String map() {
+        return "Map";
+    }
+
+
 }
-//  http://localhost:8080/wineries/list
+
+//  http://localhost:8080/Wineries
 
