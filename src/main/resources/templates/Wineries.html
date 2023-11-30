@@ -6,6 +6,25 @@
   <title>Winery List</title>
   <link rel="stylesheet" href="/background.css">
   <link rel="stylesheet" href="/Wineries.css">
+  <style>
+
+
+    .back{
+      color: greenyellow;
+    }
+    .next{
+      color:yellow;
+    }
+    .buttons{
+      font-size: 40px;
+      display: flex;
+    }
+    .buttons a{
+      color: yellow;
+      background-color: white;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 <div class="head">
   <a href="Home">Home</a>
@@ -25,14 +44,26 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="winery : ${wineries}">
+  <tr th:each="winery : ${wineriesPage.content}">
     <td th:text="${winery.name}"></td>
     <td th:text="${winery.address}"></td>
     <td th:text="${winery.location}"></td>
     <td th:text="${winery.rating}"></td>
     <td th:text="${winery.numRatings}"></td>
   </tr>
+
   </tbody>
 </table>
+
+<div class="buttons">
+  <div class="back" th:if="${wineriesPage.hasPrevious()}">
+    <a th:href="@{/Wineries(page=${wineriesPage.previousPageable().pageNumber})}">&lt;&lt; Previous Page</a>
+  </div>
+
+  <div class="next" th:if="${wineriesPage.hasNext()}">
+    <a th:href="@{/Wineries(page=${wineriesPage.nextPageable().pageNumber})}">Next Page &gt;&gt;</a>
+  </div>
+</div>
 </body>
 </html>
+
