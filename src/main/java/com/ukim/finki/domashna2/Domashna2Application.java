@@ -2,10 +2,10 @@ package com.ukim.finki.domashna2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@ComponentScan
+@EntityScan
 public class Domashna2Application {
 
 	public static void main(String[] args) {
