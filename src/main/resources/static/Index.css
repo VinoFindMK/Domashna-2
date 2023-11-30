@@ -1,0 +1,21 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    background-color: rgba(0, 190, 0, 0.559);
+    padding: 0px;
+}
+.Body {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-family: 'Yellowtail', cursive;
+}

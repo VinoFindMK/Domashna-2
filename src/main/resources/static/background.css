@@ -1,0 +1,29 @@
+body {
+    background-image: url('img/output_2426154265_0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 78vh;
+}
+
+.head {
+    background-color: rgba(0, 190, 0, 0.559);
+    padding: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    font-family: 'Yellowtail', cursive;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a :active {
+    color: black;
+    text-decoration: none;
+}

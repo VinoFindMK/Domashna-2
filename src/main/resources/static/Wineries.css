@@ -1,0 +1,15 @@
+table,
+tr,
+th,
+td,
+caption {
+    border: 2px solid gray;
+    border-collapse: collapse;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+table {
+    margin: 0 auto;
+    width: 80%;
+}
