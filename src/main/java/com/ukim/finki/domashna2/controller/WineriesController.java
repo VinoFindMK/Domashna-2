@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class WineryController {
+public class WineriesController {
 
     @Autowired
     private WineryService wineryService;
@@ -33,22 +33,6 @@ public class WineryController {
         model.addAttribute("wineriesPage", wineriesPage);
         model.addAttribute("query", query);
         return "Wineries";
-    }
-
-
-    @GetMapping("/Home")
-    public String home() {
-        return "Home";
-    }
-
-    @GetMapping("/About")
-    public String about() {
-        return "AboutUs";
-    }
-
-    @GetMapping("/Map")
-    public String map() {
-        return "Map";
     }
 
 

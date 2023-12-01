@@ -34,5 +34,12 @@ public class WineryService {
            // System.out.println(winery);
         }
     }
+    public String getWineryNameById(Long id) {
+        // Assuming you have a method in your repository to find by ID
+        WineryInfo winery = wineryRepository.findById(id).orElse(null);
+
+        // Check if the winery is found, and return its name
+        return (winery != null) ? winery.getName() : "Unknown Winery";
+    }
 
 }
