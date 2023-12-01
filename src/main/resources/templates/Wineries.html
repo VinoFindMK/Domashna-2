@@ -18,11 +18,18 @@
     .buttons{
       font-size: 40px;
       display: flex;
+      margin-left: 10%;
     }
     .buttons a{
       color: yellow;
       background-color: white;
       border-radius: 20px;
+    }
+    .tablediv{
+      margin-top: 8%;
+    }
+    .searchBar{
+      margin-left: 10%;
     }
   </style>
 </head>
@@ -33,27 +40,35 @@
   <a href="About">AboutUs</a>
 </div>
 <body>
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Location</th>
-    <th>Rating</th>
-    <th>Number of Ratings</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="winery : ${wineriesPage.content}">
-    <td th:text="${winery.name}"></td>
-    <td th:text="${winery.address}"></td>
-    <td th:text="${winery.location}"></td>
-    <td th:text="${winery.rating}"></td>
-    <td th:text="${winery.numRatings}"></td>
-  </tr>
+<div class="tablediv">
 
-  </tbody>
-</table>
+  <form class="searchBar" action="#" th:action="@{/Wineries}" method="get">
+    <input type="text" name="query" th:value="${query}" placeholder="Search by name">
+    <button type="submit">Search</button>
+  </form>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Location</th>
+      <th>Rating</th>
+      <th>Number of Ratings</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="winery : ${wineriesPage.content}">
+      <td th:text="${winery.name}"></td>
+      <td th:text="${winery.address}"></td>
+      <td th:text="${winery.location}"></td>
+      <td th:text="${winery.rating}"></td>
+      <td th:text="${winery.numRatings}"></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
 
 <div class="buttons">
   <div class="back" th:if="${wineriesPage.hasPrevious()}">

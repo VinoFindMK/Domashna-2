@@ -20,12 +20,18 @@ public class WineryService {
         return wineryRepository.findAll(pageable);
     }
 
+
+    public Page<WineryInfo> searchWineries(String query, Pageable pageable) {
+        return wineryRepository.findByNameContainingIgnoreCase(query, pageable);
+    }
+
+
     public void saveWineryToDB(WineryInfo winery) {
 
         Optional<WineryInfo> existingWinery = wineryRepository.findByName(winery.getName());
         if (!existingWinery.isPresent()) {
             wineryRepository.save(winery);
-            System.out.println(winery);
+           // System.out.println(winery);
         }
     }
 
