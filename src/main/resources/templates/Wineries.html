@@ -6,45 +6,72 @@
   <title>Winery List</title>
   <link rel="stylesheet" href="/background.css">
   <link rel="stylesheet" href="/Wineries.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/945db318c0.js" crossorigin="anonymous"></script>
   <style>
 
 
     .back{
       color: greenyellow;
+      font-weight: bold;
+      margin-right:40px;
     }
     .next{
       color:yellow;
+      font-weight: bold;
     }
     .buttons{
       font-size: 40px;
       display: flex;
-      margin-left: 10%;
+      margin-right: 13%;
+      float:right;
+      margin-top:10px;
     }
     .buttons a{
       color: yellow;
-      background-color: white;
       border-radius: 20px;
     }
     .tablediv{
-      margin-top: 8%;
+      margin-top:2%;
     }
     .searchBar{
-      margin-left: 10%;
+      float:right;
+      margin-right:13%;
+      margin-bottom:1%;
     }
+    #search{
+      width:200px;
+      border-radius: 20px;
+      height:28px;
+      justify-content: center;
+
+    }
+    #button{
+      color:black;
+      background:none;
+      border:none;
+      padding-right:30px;
+      font-size: 23px;
+    }
+    table{
+      margin-left:10%;
+      border-radius: 20px;
+    }
+
   </style>
 </head>
 <div class="head">
   <a href="Home">Home</a>
   <a href="Wineries">Wineries</a>
-  <a href="Map">Maps</a>
-  <a href="About">AboutUs</a>
+  <a href="Map">Map</a>
+  <a href="About">About Us</a>
 </div>
 <body>
 <div class="tablediv">
 
   <form class="searchBar" action="#" th:action="@{/Wineries}" method="get">
-    <input type="text" name="query" th:value="${query}" placeholder="Search by name">
-    <button type="submit">Search</button>
+    <input type="text" id="search" name="query" th:value="${query}" placeholder="Search by name">
+    <button type="submit" id="button"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
   <table>
     <thead>
@@ -72,11 +99,11 @@
 
 <div class="buttons">
   <div class="back" th:if="${wineriesPage.hasPrevious()}">
-    <a th:href="@{/Wineries(page=${wineriesPage.previousPageable().pageNumber})}">&lt;&lt; Previous Page</a>
+    <a th:href="@{/Wineries(page=${wineriesPage.previousPageable().pageNumber})}"> <i class="fa-solid fa-circle-arrow-left"></i></a>
   </div>
 
   <div class="next" th:if="${wineriesPage.hasNext()}">
-    <a th:href="@{/Wineries(page=${wineriesPage.nextPageable().pageNumber})}">Next Page &gt;&gt;</a>
+    <a th:href="@{/Wineries(page=${wineriesPage.nextPageable().pageNumber})}"> <i class="fa-solid fa-circle-arrow-right"></i></a>
   </div>
 </div>
 </body>

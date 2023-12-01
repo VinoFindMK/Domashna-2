@@ -10,6 +10,22 @@ caption {
 }
 
 table {
-    margin: 0 auto;
     width: 80%;
+}
+
+.buttons{
+    float: right;
+}
+.head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    background-color: rgba(0, 190, 0, 0.559);
+    padding: 0px;
+    opacity: 1;
+    height: 60px;
+    font-size: 25px;
+    font-family: 'Yellowtail', cursive;
 }

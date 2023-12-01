@@ -1,29 +1,47 @@
 body {
-    background-image: url('img/output_2426154265_0.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /*background-image: url('img/output_2426154265_0.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*height: 78vh;*/
     margin: 0;
     padding: 0;
-    height: 78vh;
+    background: url('img/output_2426154265_0.jpg') no-repeat center center fixed;
+    /* Replace 'your-image.jpg' with the path to your background image */
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    width: 100%;
+    overflow-x:hidden;
+    height:100%;
+
 }
 
-.head {
-    background-color: rgba(0, 190, 0, 0.559);
-    padding: 0px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-    font-family: 'Yellowtail', cursive;
-}
+/*.head {*/
+/*    background-color: rgba(0, 190, 0, 0.559);*/
+/*    padding: 0px;*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    margin: 0;*/
+/*    font-family: 'Yellowtail', cursive;*/
+/*    opacity:0.5;*/
+/*}*/
 
 a {
     color: black;
     text-decoration: none;
 }
 
-a :active {
-    color: black;
+a:active {
+    color: darkorchid;
     text-decoration: none;
+}
+
+a:hover{
+    color: yellow;
+
 }
