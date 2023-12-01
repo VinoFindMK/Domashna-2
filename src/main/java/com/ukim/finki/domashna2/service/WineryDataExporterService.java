@@ -7,7 +7,6 @@ import com.google.maps.model.LatLng;
 import com.google.maps.model.PlacesSearchResponse;
 import com.google.maps.model.PlacesSearchResult;
 import com.ukim.finki.domashna2.model.WineryInfo;
-import com.ukim.finki.domashna2.repository.WineryRepository;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,14 +18,14 @@ import java.util.List;
 @Component
 public class WineryDataExporterService implements CommandLineRunner {
     @Autowired
-    private WineryRepository wineryRepository;
+    private WineryService wineryService;
 
     @Override
     public void run(String... args) throws Exception {
         Dotenv dotenv = Dotenv.configure().load();
         String apiKey = dotenv.get("GOOGLE_MAPS_API_KEY");
         GeoApiContext context = new GeoApiContext.Builder().apiKey(apiKey).build();
-        System.out.println("hi");
+    //  int count=0;
         LatLng[] locations = {
                 new LatLng(41.25303, 21.27507),
                 new LatLng(41.52297, 22.35999),
@@ -54,21 +53,21 @@ public class WineryDataExporterService implements CommandLineRunner {
                 PlacesSearchResponse response = request.await();
                 for (PlacesSearchResult result : response.results) {
                     WineryInfo winery = new WineryInfo(result.name, result.formattedAddress, String.valueOf(result.geometry.location), result.rating, result.userRatingsTotal);
-                    allWineryData.add(winery);
-                    saveToDatabase(winery);
+                    if (LocationFilter.shouldIncludeWinery(result) ) {
+                      //  System.out.println(result.formattedAddress);
+                        wineryService.saveWineryToDB(winery);
+                        allWineryData.add(winery);
+                     //   count++;
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+       // System.out.println(count);
         QuoteFilter.quoteFilter(allWineryData);
         CsvExporter.saveDataToCsvFile(allWineryData, "all_winery_data.csv");
         System.out.println("all_winery_data.csv e kreirano");
         DuplicateFilter.duplicateFilter("all_winery_data.csv", "unique_winery_data.csv");
     }
-    private void saveToDatabase(WineryInfo winery) {
-        wineryRepository.save(winery);
-        System.out.println(winery);
-    }
-
 }

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 
 @Service
@@ -17,6 +18,15 @@ public class WineryService {
 
     public Page<WineryInfo> getAllWineries(Pageable pageable) {
         return wineryRepository.findAll(pageable);
+    }
+
+    public void saveWineryToDB(WineryInfo winery) {
+
+        Optional<WineryInfo> existingWinery = wineryRepository.findByName(winery.getName());
+        if (!existingWinery.isPresent()) {
+            wineryRepository.save(winery);
+            System.out.println(winery);
+        }
     }
 
 }
