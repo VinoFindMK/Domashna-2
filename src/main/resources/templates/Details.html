@@ -6,10 +6,10 @@
 </head>
 <body>
 <div class="head">
-    <a href="Home">Home</a>
-    <a href="Wineries">Wineries</a>
-    <a href="Map">Map</a>
-    <a href="About">About Us</a>
+    <a th:href="@{/Home}">Home</a>
+    <a th:href="@{/Wineries}">Wineries</a>
+    <a th:href="@{/Map}">Map</a>
+    <a th:href="@{/AboutUs}">About Us</a>
 </div>
 <h2> <span th:text="${winery.name}"></span></h2>
 <h2> <span th:text="${winery.address}"></span></h2>

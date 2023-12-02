@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/Details")
+@RequestMapping("/")
 public class DetailsController {
 
     @Autowired
     private WineryService wineryService;
 
-    @GetMapping("/{id}")
+    @GetMapping("Details/{id}")
     public String details(@PathVariable Long id, Model model) {
         WineryInfo winery = wineryService.getWineryById(id);
         model.addAttribute("winery", winery);
