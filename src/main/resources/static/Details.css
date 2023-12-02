@@ -1,0 +1,37 @@
+.head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    background-color: rgba(0, 190, 0, 0.559);
+    padding: 0px;
+    opacity: 1;
+    height: 60px;
+    font-size: 25px;
+    font-family: 'Yellowtail', cursive;
+}
+#map_pos{
+    float: left;
+    margin-left:4%;
+    margin-top:3%;
+}
+#info{
+    margin-left:2%;
+    margin-top:6%;
+    float:left;
+    background-color: #27ae60;
+    height: 500px;
+    width: 422px;
+    opacity: 0.9;
+}
+#info > h2{
+    margin-bottom: 50px;
+    margin-left:20px;
+    text-wrap: normal;
+    margin-right:20px;
+    font-family: 'Arial', sans-serif;
+}
+#info >h2:last-child{
+    margin-bottom: 30px;
+}
