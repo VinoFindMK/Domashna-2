@@ -20,6 +20,7 @@ public class WineryDataExporterService implements CommandLineRunner {
     @Autowired
     private WineryService wineryService;
 
+
     @Override
     public void run(String... args) throws Exception {
         Dotenv dotenv = Dotenv.configure().load();
@@ -52,14 +53,13 @@ public class WineryDataExporterService implements CommandLineRunner {
                         .radius(radius);
                 PlacesSearchResponse response = request.await();
                 for (PlacesSearchResult result : response.results) {
-                    WineryInfo winery = new WineryInfo(result.name, result.formattedAddress, String.valueOf(result.geometry.location), result.rating, result.userRatingsTotal,result.openingHours);
-                    if (LocationFilter.shouldIncludeWinery(result) ) {
-//                        if(result.openingHours.periods[1].open!=null) {
-//                            System.out.println(result.openingHours.periods[1].open.toString());
-//                        }
+                    WineryInfo winery = new WineryInfo(result.name, result.formattedAddress, String.valueOf(result.geometry.location), result.rating, result.userRatingsTotal,result.openingHours,result.placeId);
+                    if (LocationFilter.shouldIncludeWinery(result)) {
+                      //  System.out.println(winery.placeId);
+                     //   System.out.println(winery.name);
                         wineryService.saveWineryToDB(winery);
                         allWineryData.add(winery);
-                     //   count++;
+                        // count++;
                     }
                 }
             } catch (Exception e) {
@@ -67,9 +67,8 @@ public class WineryDataExporterService implements CommandLineRunner {
             }
         }
        // System.out.println(count);
-        QuoteFilter.quoteFilter(allWineryData);
-        CsvExporter.saveDataToCsvFile(allWineryData, "all_winery_data.csv");
-        System.out.println("all_winery_data.csv e kreirano");
-        DuplicateFilter.duplicateFilter("all_winery_data.csv", "unique_winery_data.csv");
+
+        System.out.println("Done");
+
     }
 }

@@ -21,7 +21,7 @@ public class WineriesController {
     private WineryService wineryService;
 
     @GetMapping("/Wineries")
-    public String listWineries(@RequestParam(required = false) String query, Model model, @PageableDefault(size = 15) Pageable pageable) {
+    public String listWineries(@RequestParam(required = false) String query, Model model, @PageableDefault(size = 10) Pageable pageable) {
         Page<WineryInfo> wineriesPage;
 
         if (query != null && !query.isEmpty()) {

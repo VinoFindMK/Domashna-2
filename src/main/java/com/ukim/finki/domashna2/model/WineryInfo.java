@@ -15,17 +15,22 @@ public class WineryInfo {
     public float rating;
     public int numRatings;
     public OpeningHours openingHours;
+    public String placeId;
+    public String phoneNumber;
+    public String[] workingHours;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    public WineryInfo(String name, String address, String location, float rating, int numRatings, OpeningHours openingHours) {
+    public WineryInfo(String name, String address, String location, float rating, int numRatings, OpeningHours openingHours,String placeId) {
         this.name = name;
         this.address = address;
         this.location = location;
         this.rating = rating;
         this.numRatings=numRatings;
         this.openingHours=openingHours;
+        this.placeId=placeId;
     }
 
     public WineryInfo() {
