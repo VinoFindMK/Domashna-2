@@ -52,9 +52,11 @@ public class WineryDataExporterService implements CommandLineRunner {
                         .radius(radius);
                 PlacesSearchResponse response = request.await();
                 for (PlacesSearchResult result : response.results) {
-                    WineryInfo winery = new WineryInfo(result.name, result.formattedAddress, String.valueOf(result.geometry.location), result.rating, result.userRatingsTotal);
+                    WineryInfo winery = new WineryInfo(result.name, result.formattedAddress, String.valueOf(result.geometry.location), result.rating, result.userRatingsTotal,result.openingHours);
                     if (LocationFilter.shouldIncludeWinery(result) ) {
-                      //  System.out.println(result.formattedAddress);
+//                        if(result.openingHours.periods[1].open!=null) {
+//                            System.out.println(result.openingHours.periods[1].open.toString());
+//                        }
                         wineryService.saveWineryToDB(winery);
                         allWineryData.add(winery);
                      //   count++;

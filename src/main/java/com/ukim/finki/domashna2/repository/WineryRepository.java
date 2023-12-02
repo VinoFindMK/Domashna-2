@@ -12,4 +12,6 @@ public interface WineryRepository extends JpaRepository<WineryInfo, Long> {
     Optional<WineryInfo> findByName(String name);
     Page<WineryInfo> findByNameContainingIgnoreCase(String name, Pageable pageable);
 
+
+
 }

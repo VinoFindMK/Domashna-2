@@ -1,5 +1,6 @@
 package com.ukim.finki.domashna2.model;
 
+import com.google.maps.model.OpeningHours;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,20 +14,19 @@ public class WineryInfo {
     public String location;
     public float rating;
     public int numRatings;
+    public OpeningHours openingHours;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    public WineryInfo(String name, String address, String location, float rating,int numRatings) {
+    public WineryInfo(String name, String address, String location, float rating, int numRatings, OpeningHours openingHours) {
         this.name = name;
         this.address = address;
         this.location = location;
         this.rating = rating;
         this.numRatings=numRatings;
-
-
+        this.openingHours=openingHours;
     }
-
 
     public WineryInfo() {
 
